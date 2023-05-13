@@ -6,12 +6,11 @@
                 --color-main: #9b5de5;
                 --color-primary: #f15bb5;
                 --color-secondary: #00bbf9;
-                --color-background: #000;
+                --color-background: #000000a6;
                 --color-link: #00bbf9;
                 --color-link-active: #f15bb5;
 
-                height: 400px;
-                width: 100%;
+                height: 350px;
                 text-transform: uppercase;
                 display: flex;
                 align-items: center;
@@ -350,6 +349,7 @@
                 position: absolute;
                 bottom: 10%;
                 right: 5%;
+                line-height: 2;
                 }
             </style>
             <div class='body'>
