@@ -1,7 +1,8 @@
-#
 <div style="width: 100%;">
   <img src="./.github/index.svg" style="width: 100%;" alt="Click to see the source">
 </div>
+
+#
 
 >  A customized thumbnails plugin for [shaka-player](https://github.com/shaka-project/shaka-player)
 
