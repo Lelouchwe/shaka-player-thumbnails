@@ -1,1 +1,1 @@
-“files”: [“dist/**/*”]
+“files”: [“dist/**/*”, "README.md", "package.json"]
