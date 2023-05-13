@@ -1,12 +1,12 @@
-<div style="background-color: rgba(0,0,0,0.3); width: 100%; min-height: 100px; border-radius: 10px;  margin: 0 auto;">
-    <h1 style="text-align: center; color: white; letter-spacing: 2px">Shaka-Player Thumbnails</h1>
-    <h3 style="text-align: center; padding-bottom: 20px">Creating a thumbnail when hovering on a seakbar</h3>
+#
+<div style="width: 100%;">
+  <img src="./.github/index.svg" style="width: 100%;" alt="Click to see the source">
 </div>
 
 >  A customized thumbnails plugin for [shaka-player](https://github.com/shaka-project/shaka-player)
-> 
+
 > Compatible with mobile browsers
-> 
+
 > Customized thumbnail and time tooltip
 
 ## install
@@ -16,7 +16,7 @@
 ```
 
 ##  Usage
-<summary>JavaScript / TypeScript</summary>
+#### JavaScript / TypeScript
 
 ```ts
 import Thumbnails from 'shaka-player-thumbnails';

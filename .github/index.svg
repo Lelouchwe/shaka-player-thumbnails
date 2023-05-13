@@ -1,0 +1,259 @@
+<svg fill="none" viewBox="0 0 600 400" width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+    <foreignObject width="100%" height="100%">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <style>
+                * {
+                margin: 0;
+                padding: 0;
+                color: inherit;
+                text-decoration: none;
+                list-style: none;
+                outline: none;
+                box-sizing: border-box;
+                }
+
+                .body {
+                --color-main: #ff9b71;
+                --color-primary: #ff4444;
+                --color-secondary: #e8e677;
+                --color-background: #000000;
+                --color-link: #fef29e;
+                --color-link-active: #ff4444;
+
+                height: 400px;
+                width: 100%;
+                text-transform: uppercase;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 7px;
+
+                background-image: radial-gradient(
+                var(--color-main),
+                var(--color-primary),
+                var(--color-secondary)
+                );
+                animation: border 5s linear infinite;
+                background-size: 200% 200%;
+                background-position: 0 0;
+                border: 24px solid;
+                border-color: var(--color-background);
+                }
+
+                .container {
+                background: var(--color-background);
+                height: calc(100% - 10px);
+                width: calc(100% - 10px);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                }
+
+                @keyframes border {
+                0% {
+                background-position: 0 0;
+                }
+                20% {
+                background-position: 100% 0;
+                }
+                40% {
+                background-position: 100% 100%;
+                }
+                60% {
+                background-position: 0 100%;
+                }
+                100% {
+                background-position: 0 0;
+                }
+                }
+
+                @keyframes intro {
+                0%,
+                75% {
+                transform: translateX(-100vw);
+                }
+                100% {
+                transform: translateX(0);
+                }
+                }
+
+                @keyframes fade {
+                0%,
+                75% {
+                opacity: 0;
+                }
+                100% {
+                opacity: 1;
+                }
+                }
+
+                @media (prefers-color-scheme: light) {
+                .body {
+                --color-main: #9b5de5;
+                --color-primary: #f15bb5;
+                --color-secondary: #00bbf9;
+                --color-background: #000000;
+                --color-link: #00bbf9;
+                --color-link-active: #f15bb5;
+                }
+                }
+
+                @media (prefers-reduced-motion) {
+                .body {
+                animation: none;
+                }
+
+                .hi {
+                animation: none;
+                }
+
+                ul li {
+                opacity: 1;
+                animation: none;
+                }
+
+                h1 a span:nth-child(1),
+                h1 a span:nth-child(2),
+                h1 a span:nth-child(3) {
+                animation: none;
+                }
+                }
+
+                .glitch {
+                color: rgb(223, 191, 191);
+                position: relative;
+                font-size: 6vw;
+                // margin: 70px 200px;
+                animation: glitch 5s 5s infinite;
+                }
+
+                .glitch::before {
+                content: attr(data-text);
+                position: absolute;
+                left: -2px;
+                text-shadow: -5px 0 magenta;
+                background: black;
+                overflow: hidden;
+                top: 0;
+                animation: noise-1 3s linear infinite alternate-reverse, glitch 5s 5.05s infinite;
+                }
+
+                .glitch::after {
+                content: attr(data-text);
+                position: absolute;
+                left: 2px;
+                text-shadow: -5px 0 lightgreen;
+                background: black;
+                overflow: hidden;
+                top: 0;
+                animation: noise-2 3s linear infinite alternate-reverse, glitch 5s 5s infinite;
+                }
+
+                @keyframes glitch {
+                1% {
+                transform: rotateX(10deg) skewX(90deg);
+                }
+                2% {
+                transform: rotateX(0deg) skewX(0deg);
+                }
+                }
+
+                @keyframes noise-1 {
+                $steps: 30;
+                @for $i from 1 through $steps {
+                #{percentage($i*(1/$steps))} {
+                $top: random(100);
+                $bottom: random(101 - $top);
+                clip-path: inset(#{$top}px 0 #{$bottom}px 0);
+                }
+                }
+                }
+
+                @keyframes noise-2 {
+                $steps: 30;
+                @for $i from 0 through $steps {
+                #{percentage($i*(1/$steps))} {
+                $top: random(100);
+                $bottom: random(101 - $top);
+                clip-path: inset(#{$top}px 0 #{$bottom}px 0);
+                }
+                }
+                }
+
+                .scanlines {
+                overflow: hidden;
+                mix-blend-mode: difference;
+                }
+
+                .scanlines::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+
+                background: repeating-linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(255, 255, 255, 0.05) 0.5%,
+                transparent 1%
+                );
+
+                animation: fudge 7s ease-in-out alternate infinite;
+                }
+
+                @keyframes fudge {
+                from {
+                transform: translate(0px, 0px);
+                }
+                to {
+                transform: translate(0px, 2%);
+                }
+                }
+
+                .glow {
+                @extend .glitch;
+                text-shadow: 0 0 1000px rgb(223, 191, 191);
+                color: transparent;
+                position: absolute;
+                top: 0;
+                }
+
+                .subtitle {
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: 100;
+                font-size: 0.8vw;
+                color: wheat;
+                text-transform: uppercase;
+                letter-spacing: 1em;
+                text-align: right;
+                animation: glitch-2 5s 5.02s infinite;
+                position: absolute;
+                bottom: 10%;
+                right: 5%;
+                }
+
+                @keyframes glitch-2 {
+                1% {
+                transform: rotateX(10deg) skewX(70deg);
+                }
+                2% {
+                transform: rotateX(0deg) skewX(0deg);
+                }
+                }
+            </style>
+            <div class='body'>
+                <div class='container'>
+                    <div class="glitch" data-text="THUMBNAILS">THUMBNAILS</div>
+                    <div class="glow">THUMBNAILS</div>
+                    <p class="subtitle">
+                        Creating a thumbnail <br />
+                        by Lelouchwe
+                    </p>
+                </div>
+            </div>
+        </div>
+    </foreignObject>
+</svg>
