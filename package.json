@@ -1,0 +1,34 @@
+{
+  "name": "shaka-player-thumbnails",
+  "version": "1.0.0",
+  "description": "Customized thumbnails plugin for shaka-player",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lelouchwe/shaka-player-thumbnails.git"
+  },
+  "keywords": [
+    "shaka-player",
+    "shaka-player-thumbnails",
+    "thumbnails-plugin",
+    "shaka-plugin",
+    "thumbnail"
+  ],
+  "author": "Vitaliy Shubnikov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lelouchwe/shaka-player-thumbnails/issues"
+  },
+  "homepage": "https://github.com/Lelouchwe/shaka-player-thumbnails#readme",
+  "devDependencies": {
+    "prettier": "^2.8.8",
+    "typescript": "^5.0.4"
+  }
+}
