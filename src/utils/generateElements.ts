@@ -20,7 +20,7 @@ export const createThumbnailContainer = (video: HTMLElement) => {
 export const createImagesPool = async (images: string[]) => {
   for await (const [index, value] of images.entries()) {
     const image: HTMLImageElement = document.createElement('img');
-    image.id = 'thumbnail-' + index;
+    image.id = `${value}-` + index;
     image.src = value;
     setPropertyStyles(image, {
       display: 'none',
@@ -29,7 +29,7 @@ export const createImagesPool = async (images: string[]) => {
   }
 };
 
-export const createTimeTooltip = (tooltip: Boolean | undefined) => {
+export const createTimeTooltip = (tooltip: boolean | undefined) => {
   if (tooltip === false) return;
   const style = document.createElement('style');
   style.innerHTML = `.${thumbnail.className}::before { content: attr(data-time); position: absolute; bottom: -${defaultTooltipOffset}px; }`;

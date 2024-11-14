@@ -3,7 +3,8 @@ export interface IOptions {
   columns: number;
   rows: number;
   scale?: number;
-  styles?: Object;
+  styles?: object;
   timeTooltip?: boolean;
   thumbnails: string[];
+  seekBarId?: string;
 }

@@ -3,9 +3,9 @@ import { setPropertyStyles, isTouchEvent, toTime } from '../common/helpers';
 import { getThumbnailImage, getAxis, getAxisThumb } from './getThumbValues';
 import { defaultScale } from '../common/constance';
 
-export default function useThumbnail(video: HTMLVideoElement, options: IOptions) {
-  const seekBar: HTMLElement | null = document.querySelector('.shaka-seek-bar');
-  const control: HTMLElement | null = document.querySelector('.shaka-bottom-controls');
+export default function useThumbnail(video: HTMLVideoElement, options: IOptions, pool: Map<number, string>) {
+  const seekBar: HTMLElement | null = document.querySelector(options.seekBarId ?? '.shaka-seek-bar');
+  const control: HTMLElement | null = document.querySelector(options.seekBarId ?? '.shaka-bottom-controls');
   const thumbnails = options.thumbnails;
   const thumbnailWrapper = document.getElementById('thumbnail');
 
@@ -28,7 +28,7 @@ export default function useThumbnail(video: HTMLVideoElement, options: IOptions)
       const thumbValue = thumbnails[thumbIndex];
 
       if (thumbValue && thumbIndex !== null) {
-        const thumbnail = await getThumbnailImage(thumbIndex);
+        const thumbnail = getThumbnailImage(thumbIndex, thumbValue);
 
         if (thumbnail && thumbnailWrapper && control) {
           const thumbWidth = (thumbnail.naturalWidth / options?.columns) * scaleImage;

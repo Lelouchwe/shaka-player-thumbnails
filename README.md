@@ -1,8 +1,11 @@
-<div style="width: 100%;">
-  <img src="./.github/index.svg" style="width: 100%;" alt="Click to see the source">
-</div>
+[//]: # (<div style="width: 100%;">)
 
-#
+[//]: # (  <img src="./.github/index.svg" style="width: 100%;" alt="Click to see the source">)
+
+[//]: # (</div>)
+
+## Thumbnails for player
+#You can use this plugin with other players libraries as well (not only shaka-player), need to set `seekBarId` in the props.
 
 >  A customized thumbnails plugin for [shaka-player](https://github.com/shaka-project/shaka-player)
 
@@ -37,6 +40,7 @@ interface IOptions {
     scale?: number; // multiplier size of thumbnail (default: 1)
     styles?: Object; // accept object of styles, you can write them in camelcase style
     timeTooltip?: boolean; // show time under thumbnail (default: true)
+    seekBarId?: string; // id of seekbar (#custom-seekbar, .custom-seekbar)
 }
 ```
 #### Initialize plugin after you stream is loaded

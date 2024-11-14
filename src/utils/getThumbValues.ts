@@ -1,8 +1,8 @@
 import { IOptions } from '../common/types';
 import { defaultTop } from '../common/constance';
 
-export const getThumbnailImage = (index: number): HTMLImageElement | null =>
-  document.getElementById('thumbnail-' + index) as HTMLImageElement;
+export const getThumbnailImage = (index: number, image: string): HTMLImageElement | null =>
+  document.getElementById(`${image}-` + index) as HTMLImageElement;
 
 export const getAxis = (position: number, step: number, options: IOptions): { x: number; y: number } => {
   const x = Math.floor((position / step / options?.columns) % options?.rows);

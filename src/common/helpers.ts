@@ -26,8 +26,8 @@ export const toFormatTime = (seconds: number): string => {
     .join(':')
     .replace(/00:/, '');
 };
-
 export const toTime = (seconds: number): string => {
   const ms = seconds * 1000;
-  return new Date(ms).toISOString().substring(11, 19).replace(/00:/, '');
+  const timeString = new Date(ms).toISOString().substring(11, 19);
+  return timeString.startsWith('00:') ? timeString.replace('00:', '') : timeString;
 };

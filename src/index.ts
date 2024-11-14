@@ -12,13 +12,19 @@ export default class ThumbnailsPlugin {
   }
 
   async initialize(): Promise<void> {
-    const seekBar: HTMLElement | null = document.querySelector('.shaka-seek-bar');
-    if (this.video && seekBar) {
-      await createThumbnailContainer(this.video);
-      await createTimeTooltip(this.options?.timeTooltip);
-      await createImagesPool(this.options.thumbnails);
+    let seekBar: HTMLElement | null;
+    if (this.options.seekBarId) {
+      seekBar = document.querySelector(this.options.seekBarId);
+    } else {
+      seekBar = document.querySelector('.shaka-seek-bar');
+    }
 
-      const { create, remove } = useThumbnails(this.video, this.options);
+    if (this.video && seekBar) {
+      createThumbnailContainer(this.video);
+      createTimeTooltip(this.options?.timeTooltip);
+      await createImagesPool(this.options.thumbnails);
+      const imagePool = new Map(this.options.thumbnails.map((image, index) => [index + 1, image]));
+      const { create, remove } = useThumbnails(this.video, this.options, imagePool);
 
       if (seekBar instanceof HTMLElement) {
         seekBar.addEventListener('mousemove', create);
