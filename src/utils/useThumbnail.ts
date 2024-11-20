@@ -3,7 +3,7 @@ import { setPropertyStyles, isTouchEvent, toTime } from '../common/helpers';
 import { getThumbnailImage, getAxis, getAxisThumb } from './getThumbValues';
 import { defaultScale } from '../common/constance';
 
-export default function useThumbnail(video: HTMLVideoElement, options: IOptions, pool: Map<number, string>) {
+export default function useThumbnail(video: HTMLVideoElement, options: IOptions) {
   const seekBar: HTMLElement | null = document.querySelector(options.seekBarId ?? '.shaka-seek-bar');
   const control: HTMLElement | null = document.querySelector(options.seekBarId ?? '.shaka-bottom-controls');
   const thumbnails = options.thumbnails;
@@ -13,19 +13,26 @@ export default function useThumbnail(video: HTMLVideoElement, options: IOptions,
     if (seekBar instanceof HTMLElement) {
       const sb: HTMLElement = seekBar;
       const seekbarOffset: number = (video.offsetWidth - sb.offsetWidth) / 2;
-      const clientX: number = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
+      const sbRect = sb.getBoundingClientRect();
+      const seekBarLeft = sbRect.left;
+      const seekBarWidth = sbRect.width;
 
-      const seekBarWidth: number = sb.clientWidth;
-      const spriteWidth: number = (seekBarWidth + seekbarOffset) / thumbnails.length;
-      const thumbCountPerSlide: number = options?.columns * options?.rows;
-      const stepThumbInSprite: number = spriteWidth / thumbCountPerSlide;
-      const thumbIndex: number = Math.floor((clientX - seekbarOffset) / spriteWidth);
-      const spriteEvent: number = clientX - seekbarOffset - spriteWidth * thumbIndex;
-      const scaleImage: number = options?.scale ?? defaultScale;
-      const clientPercent: number = 1 - (1 - (clientX - seekbarOffset) / seekBarWidth);
-      const currentTime: number = video.duration * clientPercent;
+      const clientX = isTouchEvent(e) ? e.touches[0].clientX : e.clientX;
+      const relativeX = Math.max(0, Math.min(seekBarWidth, clientX - seekBarLeft));
 
+      const clientPercent = relativeX / seekBarWidth;
+      const currentTime = video.duration * clientPercent;
+
+      const interval =
+        options.interval ?? Math.ceil(video.duration / (thumbnails.length * options.columns * options.rows));
+      const imageInSpriteIndex = Math.floor(currentTime / interval);
+
+      const thumbIndex = Math.trunc(imageInSpriteIndex / (options.columns * options.rows));
       const thumbValue = thumbnails[thumbIndex];
+
+      const scaleImage = options?.scale ?? defaultScale;
+      const spriteWidth = interval * options.columns * options.rows;
+      const spriteEvent = Math.floor(currentTime % spriteWidth);
 
       if (thumbValue && thumbIndex !== null) {
         const thumbnail = getThumbnailImage(thumbIndex, thumbValue);
@@ -36,7 +43,7 @@ export default function useThumbnail(video: HTMLVideoElement, options: IOptions,
           const thumbFullWidth = thumbnail.naturalWidth * scaleImage;
           const thumbFullHeight = thumbnail.naturalHeight * scaleImage;
 
-          const { x, y } = getAxis(spriteEvent, stepThumbInSprite, options);
+          const { x, y } = getAxis(spriteEvent, interval, options);
           const { top, left } = getAxisThumb(clientX, thumbWidth, seekBarWidth, seekbarOffset, control, options);
 
           setPropertyStyles(thumbnailWrapper, {

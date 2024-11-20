@@ -23,8 +23,8 @@ export default class ThumbnailsPlugin {
       createThumbnailContainer(this.video);
       createTimeTooltip(this.options?.timeTooltip);
       await createImagesPool(this.options.thumbnails);
-      const imagePool = new Map(this.options.thumbnails.map((image, index) => [index + 1, image]));
-      const { create, remove } = useThumbnails(this.video, this.options, imagePool);
+
+      const { create, remove } = useThumbnails(this.video, this.options);
 
       if (seekBar instanceof HTMLElement) {
         seekBar.addEventListener('mousemove', create);

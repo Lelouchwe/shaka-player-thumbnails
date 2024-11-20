@@ -7,4 +7,5 @@ export interface IOptions {
   timeTooltip?: boolean;
   thumbnails: string[];
   seekBarId?: string;
+  interval?: number;
 }
