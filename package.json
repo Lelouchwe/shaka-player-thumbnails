@@ -1,6 +1,6 @@
 {
   "name": "shaka-player-thumbnails",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Customized thumbnails plugin for shaka-player",
   "author": "Vitaliy Shubnikov <vitalikshubnikov@icloud.com>",
   "license": "MIT",
