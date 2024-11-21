@@ -4,22 +4,28 @@
 
 [//]: # (</div>)
 
-## Thumbnails for player
-#You can use this plugin with other players libraries as well (not only shaka-player), need to set `seekBarId` in the props.
+# 🎞️ shaka-player-thumbnails
 
->  A customized thumbnails plugin for [shaka-player](https://github.com/shaka-project/shaka-player)
+A highly customizable thumbnail plugin for [Shaka Player](https://github.com/shaka-project/shaka-player) and **other video player libraries!**
 
-> Compatible with mobile browsers
+**Features:**
+- 🌐 **Cross-Player Support**: Fully compatible with other player libraries. Simply specify the `seekBarId` in the configuration to integrate seamlessly.
+- 🖼️ **Thumbnail Previews**: Display thumbnails on the seek bar for better navigation.
+- 🎛️ **Customizable**: Easily adjust the size, position, styles, and intervals of thumbnails.
+- ⏰ **Time Tooltip**: Optionally show timestamps under thumbnails.
+- 📱 **Mobile-Friendly**: Optimized for mobile browsers.
 
-> Customized thumbnail and time tooltip
+---
 
-## install
+## 🚀 Installation
+
+Install the plugin via npm:
 
 ```bash
- npm install shaka-player-thumbnails
+npm install shaka-player-thumbnails
 ```
 
-##  Usage
+##  📖 Usage
 #### JavaScript / TypeScript
 
 ```ts
@@ -33,21 +39,22 @@ const thumbnailsPlugin = new Thumbnails(
 ####  Interface of options
 ```ts
 interface IOptions {
-    columns: number; // count columns in sprite
-    rows: number; // count rows in sprite
-    thumbnails: string[]; // array of thumbnails
-    top?: number; // you can control position of thumbnail (default: 120)
-    scale?: number; // multiplier size of thumbnail (default: 1)
-    styles?: Object; // accept object of styles, you can write them in camelcase style
-    timeTooltip?: boolean; // show time under thumbnail (default: true)
-    seekBarId?: string; // id of seekbar (#custom-seekbar, .custom-seekbar)
+    columns: number; // Number of columns in the sprite sheet
+    rows: number; // Number of rows in the sprite sheet
+    interval?: string; // Interval between thumbnails in the sprite (e.g., "10s")
+    thumbnails: string[]; // Array of sprite image URLs
+    top?: number; // Thumbnail position offset (default: 120px)
+    scale?: number; // Thumbnail size multiplier (default: 1)
+    styles?: Object; // Custom styles in camelCase format
+    timeTooltip?: boolean; // Enable/disable time tooltips (default: true)
+    seekBarId?: string; // Custom seek bar selector (e.g., "#custom-seekbar", ".custom-seekbar")
 }
 ```
 #### Initialize plugin after you stream is loaded
 ```ts
 thumbnailsPlugin.initialize();
 ```
-##  Example
+##  💡 Example Integration
 ```ts
 import shaka from 'shaka-player/dist/shaka-player.ui';
 import Thumbnails from 'shaka-player-thumbnails';
@@ -81,6 +88,12 @@ const initPlayer = async () => {
 }
 ```
 
-## License
-
+## 📜 License
 Released under [MIT](https://github.com/Lelouchwe/shaka-player-thumbnails/blob/master/LICENSE) by [lelouchwe](https://github.com/Lelouchwe).
+## 🛠️ Contributing
+
+Contributions are welcome! If you find bugs or have feature requests, feel free to open an issue or submit a pull request.
+
+📬 Author
+
+Developed with ❤️ by [lelouchwe](https://github.com/Lelouchwe).
