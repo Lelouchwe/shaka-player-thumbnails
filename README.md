@@ -41,7 +41,7 @@ const thumbnailsPlugin = new Thumbnails(
 interface IOptions {
     columns: number; // Number of columns in the sprite sheet
     rows: number; // Number of rows in the sprite sheet
-    interval?: string; // Interval between thumbnails in the sprite (e.g., "10s")
+    interval?: number; // Interval between thumbnails in the sprite (e.g., "4")
     thumbnails: string[]; // Array of sprite image URLs
     top?: number; // Thumbnail position offset (default: 120px)
     scale?: number; // Thumbnail size multiplier (default: 1)

@@ -1,7 +1,7 @@
 {
   "name": "shaka-player-thumbnails",
   "version": "1.0.4",
-  "description": "Customized thumbnails plugin for shaka-player",
+  "description": "Customized Thumbnails plugin for shaka-player and other video player libraries",
   "author": "Vitaliy Shubnikov <vitalikshubnikov@icloud.com>",
   "license": "MIT",
   "main": "dist/index.js",
